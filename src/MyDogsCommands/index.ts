@@ -4,4 +4,18 @@
 
 import * as fs from "fs"
 
-class 
+import * as Discord from "discord.js"
+
+class CommandFiles { //CommandFiles is a object that contains the classes of commands mapped by their name
+
+    file: Discord.Collection<string, object> = {
+
+    }
+
+    constructor() {
+        this.file
+    }
+
+    add()
+    }
+}

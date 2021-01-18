@@ -8,15 +8,19 @@ const client = new Discord.Client()
 namespace MyDogsBot {
     export class Main {
         public static main(): void {
+
+
+
+            
             client.on ('message', async function(message: Discord.Message): Promise<void>{
                 if (message.cleanContent.startsWith(/*TODO: config.prefix */ "|")){
-                    
+                    return true
                 }
             }
             
         }
     }
-}
+
 
 
 MyDogsBot.Main.main();

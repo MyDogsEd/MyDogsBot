@@ -8,8 +8,9 @@ const client = new Discord.Client();
 import * as minify from "jsonminify";
 
 import * as fs from "fs";
+import { Console } from "console";
 
-export namespace MyDogsUtil {
+export module MyDogsUtil {
     
      export class Util{
 
@@ -25,16 +26,21 @@ export namespace MyDogsUtil {
             return "https://discord.gg/VkSJsABxaX"; 
         } // Takes: Returns: String of MyDogsBot Discord Server Link (Not to be confused with Util.createBotInvite())
 
-        public static importCommandFiles(path: string): object{
+        public static importCommandFiles(path: string): Discord.Collection<string, object>{
             var commandFiles: string[] = fs.readdirSync(path).filter(function (file: string){return file.endsWith('.js')});
-            var commandCollection = new Discord.Collection();
+            var commandCollection = new Discord.Collection<string, object>();
 
-            for (const files of commandFiles){
-                var command = require(path + '/' + files);
-                
+            for (const file of commandFiles){
+                var command = require(path + '/' + file);
+                console.log(`commandFile ${file} loaded!`); // TODO: make this Debug.log when i finidh writing that part - MDE
+                commandCollection.set(command.Command.commandIndex.name, command.Command.main()); // TODO: make this work KEKW
             }
+            return commandCollection;
 
-        }
+        } // (hopefully) returns a Discord.Collection of command files in the dir mapped by their names, containing the main() function of each command
+         public static loadConfig(path: string): Object{
+             return require(minify(fs.readFile(path)))
+         } // ~Should~ return a json object from a json formatted file with comments (hopefully)
 
         //TODO: command verification function (function that verifies that all commands are callable and are written correctly)
 
