@@ -2,9 +2,11 @@
 // See the LICENSE file in the project root for full license text.
 // <https://github.com/MyDogsEd/MyDogsBot>
 
+import * as Discord from "discord.js";
+
 export module MyDogsUtil {
 
-    export class Discord {
+    export class DiscordUtil {
 
         public static createBotInvite(client: Discord.Client): string {
             return `https://discord.com/oauth2/authorize?client_id=${client.id}&scope=bot&permissions=8`

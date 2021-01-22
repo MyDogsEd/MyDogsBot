@@ -30,6 +30,7 @@ export module MyDogsUtil {
             return commandCollection;
 
         } // (hopefully) returns a Discord.Collection of command files in the dir mapped by their names, containing the main() function of each command
+
          public static loadConfig(path: string): Object{
              return require(minify(fs.readFile(path, null)))
          } // ~Should~ return a json object from a json formatted file with comments (hopefully)
