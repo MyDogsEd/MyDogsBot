@@ -17,10 +17,9 @@ namespace MyDogsBot {
                     return true
                 }
             }
-            
         }
     }
-
+}
 
 
 MyDogsBot.Main.main();

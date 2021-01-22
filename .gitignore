@@ -76,7 +76,7 @@ web_modules/
 .cache
 .parcel-cache
 
-# Next.js build output
+# Next.js build output (TS Build out too)
 .next
 out
 
@@ -118,3 +118,6 @@ dist
 #block bot token file (containing discord bot auth token) from
 #being uploaded to github
 *.bottoken
+
+# block lazygit from being added to repo
+lazygit.exe
