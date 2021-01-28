@@ -2,12 +2,15 @@
 // See the LICENSE file in the project root for full license text.
 // <https://github.com/MyDogsEd/MyDogsBot>
 
-export namespace MyDogsVoice {
-
-    export class VoiceSystem {
+export class VoiceSystem {
         
-        constructor() {
+    constructor() {
             
-        }
     }
 }
+
+//TODO: Eventually this is where the QueueSystem will go, so the title is a little misleading at this point.\
+/* Ideas for QueueSystem:
+QueueElement type: song/whatever in the song queue
+more ideas l8r
+*/
