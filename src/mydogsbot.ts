@@ -7,15 +7,19 @@ const client = new Discord.Client()
 
 import * as MyDogsUtil from "./MyDogsUtil/index"
 
-
+const config = new MyDogsUtil.ConfigUtil("../CONFIG/config.jdog", function(err){
+    throw err;
+});
 
 export class MyDogsBot {
 
-    public static async main(): Promise<void> {
-
-        client.login(MyDogsUtil.Util.loadConfig("../CONFIG/token.bottoken").betatoken);
-            
+    public static async main(isBeta: boolean): Promise<void> {
+            MyDogsUtil.
     }
+
+    
 }
 
+
+if (config.config[])
 MyDogsBot.main();
