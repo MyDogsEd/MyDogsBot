@@ -2,13 +2,6 @@
 // See the LICENSE file in the project root for full license text.
 // <https://github.com/MyDogsEd/MyDogsBot> <mydogsbot@mydogsed.dev>
 
-
-import * as Discord from "discord.js";
-
-import * as minify from "jsonminify";
-
-import * as fs from "fs";
-
 /** 
  * Utility Class. Does not need to be Initialized.
  */
