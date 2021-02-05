@@ -2,6 +2,14 @@
 // See the LICENSE file in the project root for full license text.
 // <https://github.com/MyDogsEd/MyDogsBot> <mydogsbot@mydogsed.dev>
 
-export * from "./Util";
-export * from "./DiscordUtil";
-export * from "./ConfigUtil";
+import * as minify from "jsonminify";
+import * as fs from "fs"
+
+export class Config {
+
+    config: JSON;
+
+    constructor(path: string) {
+        this.config = require(minify(fs.readFileSync(path)))
+    }
+}
