@@ -5,11 +5,52 @@
 import * as minify from "jsonminify";
 import * as fs from "fs"
 
-export class Config {
+export class ConfigUtil {
 
-    config: JSON;
+    private _config: JSON;
 
-    constructor(path: string) {
-        this.config = require(minify(fs.readFileSync(path)))
+    /** 
+    * Initlize the ConfigUtil object with the constructor.
+    * 
+    * @param path - File path to the json file to load.
+    * 
+    * @param callback - Callback function to handle file load/parse errors
+    * 
+    */
+    constructor(path: fs.PathLike, callback?: errorCallback) {
+        try {
+            this._config = JSON.parse(minify(fs.readFileSync(path)));
+        } catch (err) {
+            callback(err);
+        };
+
+    };
+
+    /**
+     * Get the config json object set in the constructor.
+     * 
+     * @returns JSON object initilized in constructor. 
+     */
+    public get config():JSON {
+
+        return this._config;
+
+    };
+
+    /**
+     * Techinically, this value has a setter, but the setter only returns an error.
+     * @readonly
+     */
+    public set config(value: JSON) {
+
+        throw new Error('This properity is read-only!');
+
     }
+
+}
+
+interface errorCallback {
+
+    (err:Error): void;
+
 }
