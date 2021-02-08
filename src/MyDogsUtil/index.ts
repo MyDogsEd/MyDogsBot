@@ -4,4 +4,3 @@
 
 export * from "./Util";
 export * from "./DiscordUtil";
-export * from "./ConfigUtil";

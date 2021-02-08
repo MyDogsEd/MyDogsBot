@@ -2,24 +2,25 @@
 // See the LICENSE file in the project root for full license text.
 // <https://github.com/MyDogsEd/MyDogsBot> <mydogsbot@mydogsed.dev>
 
-import * as Discord from "discord.js"
-const client = new Discord.Client()
+import * as Discord from "discord.js";
+const client = new Discord.Client();
 
-import * as MyDogsUtil from "./MyDogsUtil/index"
-
-const config = new MyDogsUtil.ConfigUtil("../CONFIG/config.jdog", function(err){
-    throw err;
-});
+const config = require("../config/config.json");
 
 export class MyDogsBot {
 
     public static async main(isBeta: boolean): Promise<void> {
-            MyDogsUtil.
-    }
+        
+        // Register event functions
+        client.on('message', function (message){this.onMessage(message);}); // Register this.onMessage to the `message` event.
 
-    
-}
+    };
 
+    public static async onMessage(message: Discord.Message): Promise<void> {
+        
+        
+    };
+};
 
-if (config.config[])
-MyDogsBot.main();
+client.login(config["botToken"]);
+MyDogsBot.main(config["isBeta"]);
