@@ -37,7 +37,7 @@ export class DiscordUtil {
      * 
      * @returns a boolean value depending on if the command was executed sucessfully or not.
      */
-    public static async callCmd(message: Discord.Message): Promise<boolean> {
+    public static async callCmd(message: Discord.Message): Promise<boolean> { // TODO: add reason(s) for commands not executing.
         if (!message.content.startsWith(config["commandPrefix"])){ return false; };
 
         var args: string = message.content.substr(config["commandPrefix"].length);
@@ -47,9 +47,9 @@ export class DiscordUtil {
 
             return await cmdindex[splitArgs[0]].main(message, args, splitArgs);
 
-        } else if (cmdindex[cmdaliases[0]] !== undefined) {
+        } else if (cmdindex[cmdaliases[splitArgs[0]]] !== undefined) {
 
-            return await cmdindex[cmdaliases[0]].main(message, args, splitArgs);
+            return await cmdindex[cmdaliases[splitArgs[0]]].main(message, args, splitArgs);
 
         } else {
 
