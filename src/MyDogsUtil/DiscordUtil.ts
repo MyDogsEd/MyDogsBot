@@ -13,6 +13,7 @@ import * as config from "../../config/config";
  */
 export class DiscordUtil {
 
+
     /**
      * 
      * @param clientid client.id of logged in Discord bot user.
@@ -23,12 +24,12 @@ export class DiscordUtil {
         return `https://discord.com/oauth2/authorize?client_id=${clientid}&scope=bot&permissions=8`; //Hardcoded permissions value: Administrator. No Touchy!
     };
     
+
     /**
-     * @returns Server invite link for the MyDogsBot Discord server.
+     * @constant serverInvite Server invite link for the MyDogsBot Discord server.
      */
-    public static serverInvite(): string {
-        return "https://discord.gg/VkSJsABxaX"; 
-    };
+    public static readonly serverInvite: string = "https://discord.gg/VkSJsABxaX"; 
+
 
     /**
      * Attempts to call a command for the given Discord.Message.
@@ -44,18 +45,29 @@ export class DiscordUtil {
         var splitArgs: string[] = args.split(" ");
 
         if (cmdindex[splitArgs[0]] !== undefined) {
-
-            return await cmdindex[splitArgs[0]].main(message, args, splitArgs);
+            message.channel.startTyping();
+            try {
+                return await cmdindex[splitArgs[0]].main(message, args, splitArgs);
+            } catch(err) {
+                message.reply("Error in command execution: " + err);
+            } finally {
+                message.channel.stopTyping();
+            };
 
         } else if (cmdindex[cmdaliases[splitArgs[0]]] !== undefined) {
-
-            return await cmdindex[cmdaliases[splitArgs[0]]].main(message, args, splitArgs);
+            message.channel.startTyping();
+            try {
+                return await cmdindex[cmdaliases[splitArgs[0]]].main(message, args, splitArgs);
+            } catch (err) {
+                message.reply("Error in command execution: " + err);
+            } finally {
+                message.channel.stopTyping();
+            };
 
         } else {
-
             return false;
-
         }
     }
+    
 
 }

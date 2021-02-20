@@ -15,6 +15,7 @@ export class MyDogsBot {
         
         // Register event functions
         client.on('message', function (message){MyDogsBot.onMessage(message);}); // Register this.onMessage to the `message` event.
+        client.on('ready', function (){MyDogsBot.onReady();});
 
     };
 
@@ -35,6 +36,11 @@ export class MyDogsBot {
         };
         
     };
+
+    static async onReady(): Promise<void> {
+
+        console.log()
+    }
 };
 
 client.login(config["botToken"]);

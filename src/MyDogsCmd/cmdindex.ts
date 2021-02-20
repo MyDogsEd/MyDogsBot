@@ -11,6 +11,8 @@ import * as Discord from "discord.js";
  */
 export const cmdindex: cmdindex = {
     "hello": cmd.Hello,
+    "invite": cmd.BotInvite,
+    "server": cmd.ServerInvite,
 };
 
 /**

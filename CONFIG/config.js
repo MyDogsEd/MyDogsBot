@@ -15,6 +15,7 @@ const config =
 {
     "homeConfig": {
         "homeGuild": "734502410952769607",
+        "homeGuildMainChannelId": "734518828264063058",
         "botOwner": "335802802335121408"
     },
     
