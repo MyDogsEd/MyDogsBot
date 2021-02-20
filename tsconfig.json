@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "ES2017",
         "outDir": "./out",
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "module": "CommonJS"
     },
     "include":["./src/**/*"],
 }

@@ -1,16 +1,20 @@
 # MyDogsBot Commands
 Commands will be registered in `./MyDogsCmd/cmdindex.ts` in the following way:
+
 ``` typescript
+
 export const cmdindex: Object { // This object lists all commands and their aliases.
 
-    "hello": Hello.main(), // The name of the command is in all lowercase, 
-    // And points to the function that will execute the command.
+    "hello": cmds.Hello, // The name of the command is in all lowercase, 
+    // And contains a refrence to a class that contains a `main()` method that executes the command.
 
-    Aliases : {
-        "hi": "hello" // Command name Aliases are registered here. 
-        // This will be searched if cannot find command normally.
-    };
 };
+export const cmdaliases: cmdaliases { // Command name Aliases are registered here.
+    
+    "hi": "hello" // `key: string` is the name of the command alias, `value: string` is the name of the command key in `cmdindex`.
+
+};
+
 ```
 
 ### Note

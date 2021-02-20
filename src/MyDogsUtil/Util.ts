@@ -3,7 +3,7 @@
 // <https://github.com/MyDogsEd/MyDogsBot> <mydogsbot@mydogsed.dev>
 
 /** 
- * Utility Class. Does not need to be Initialized.
+ * Utility Class.
  */
 export class Util {
     
@@ -18,7 +18,4 @@ export class Util {
         return Math.floor( Math.random() * (max - min) + min )
     };
 
-    //TODO: command verification function (function that verifies that all commands are callable and are written correctly)
 }
-
-

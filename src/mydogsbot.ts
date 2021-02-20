@@ -5,9 +5,9 @@
 import * as Discord from "discord.js";
 const client = new Discord.Client();
 
-import { cmdindex, cmdaliases } from "./MyDogsCmd/cmdindex"
+//import { cmdindex, cmdaliases } from "./MyDogsCmd/cmdindex"
 
-import * as config from "../config/config.js"
+import * as config from "../config/config"
 
 export class MyDogsBot {
 
@@ -15,36 +15,26 @@ export class MyDogsBot {
         
         // Register event functions
         client.on('message', function (message){MyDogsBot.onMessage(message);}); // Register this.onMessage to the `message` event.
-        console.log("main()");
+
     };
 
-    public static async onMessage(message: Discord.Message): Promise<void> {
+    /**
+     * Checks to see of a command exists for a set of args, then executes the command.
+     * (Keep in mind that commands are executed by calling the `main()` method from the class refrenced in the command index.)
+     * 
+     * @param message the Discord.Message of the command message. 
+     * 
+     * @returns Boolean value of whether or not the command was executed sucessfully.
+     */
+    //public static async callCmd(message: Discord.Message): boolean {
 
-        console.log('OnMessage method called');
+    //}
 
-        if (message.content.startsWith(config["commandPrefix"])){
+    static async onMessage(message: Discord.Message): Promise<void> {
 
-            console.log("Message starts with `commandPrefix`");
+        if (message.content.startsWith(config["commandPrefix"])){ // TODO: Make it so servers can change their own commandprefix. do with database and things.
 
-            var args = message.content.substring(config["commandPrefix"].length);
-            console.log(config["commandPrefix"].length) // Should be 1
-            console.log(args); // Should print the command without the prefix
-            var splitArgs = args.split(" ");
-            console.log(splitArgs);
-
-            if (cmdindex[splitArgs[0]] !== undefined) {
-                console.log('Command name has been found in `cmdIndex`');
-
-                var completed: boolean = cmdindex[splitArgs[0]].main(message, args, splitArgs);
-
-            } else if (cmdaliases[splitArgs[0]] !== undefined) {
-                console.log('Command name has been found in `cmdaliases`');
-
-                var completed: boolean = cmdindex[cmdaliases[splitArgs[0]]].main(message, args, splitArgs);
-            } else {
-                console.log('Command name has not been found in either `cmdindex` or `cmdaliases`')
-            }
-
+            //const result = this.callCmd(message);
 
         } else {
 
