@@ -11,7 +11,7 @@ const fs = require('fs');
 
 const path = require('path');
 
-export const config = 
+const config = 
 {
     "homeConfig": {
         "homeGuild": "734502410952769607",
@@ -22,3 +22,4 @@ export const config =
     "commandPrefix": "|",
     "botToken": JSON.parse(fs.readFileSync(path.resolve(__dirname, "./token.bottoken")).toString()).betatoken
 };
+module.exports = config;

@@ -5,9 +5,9 @@
 import * as Discord from "discord.js";
 const client = new Discord.Client();
 
-//import { cmdindex, cmdaliases } from "./MyDogsCmd/cmdindex"
+import * as config from "../config/config";
 
-import * as config from "../config/config"
+import * as MyDogsUtil from "./MyDogsUtil";
 
 export class MyDogsBot {
 
@@ -18,23 +18,15 @@ export class MyDogsBot {
 
     };
 
-    /**
-     * Checks to see of a command exists for a set of args, then executes the command.
-     * (Keep in mind that commands are executed by calling the `main()` method from the class refrenced in the command index.)
-     * 
-     * @param message the Discord.Message of the command message. 
-     * 
-     * @returns Boolean value of whether or not the command was executed sucessfully.
-     */
-    //public static async callCmd(message: Discord.Message): boolean {
-
-    //}
-
     static async onMessage(message: Discord.Message): Promise<void> {
 
         if (message.content.startsWith(config["commandPrefix"])){ // TODO: Make it so servers can change their own commandprefix. do with database and things.
 
-            //const result = this.callCmd(message);
+            var completed = await MyDogsUtil.DiscordUtil.callCmd(message);
+            
+            if (completed === false){
+                message.reply("Command was called incorrectly")
+            };
 
         } else {
 

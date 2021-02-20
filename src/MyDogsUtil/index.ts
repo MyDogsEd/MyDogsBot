@@ -2,6 +2,5 @@
 // See the LICENSE file in the project root for full license text.
 // <https://github.com/MyDogsEd/MyDogsBot> <mydogsbot@mydogsed.dev>
 
-export * from "./CmdUtil";
 export * from "./DiscordUtil";
 export * from "./Util";
