@@ -7,7 +7,7 @@ const client = new Discord.Client();
 
 import * as config from "../config/config";
 
-import * as MyDogsUtil from "./MyDogsUtil";
+import { MyDogsUtil }  from "./libs/MyDogsUtil";
 
 export class MyDogsBot {
 
